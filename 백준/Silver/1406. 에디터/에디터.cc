@@ -1,19 +1,19 @@
 #include <iostream>
 #include <stack>
-#include <string>
+#include <algorithm>
 using namespace std;
 
 int main() {
     stack<char> st;
     stack<char> subst;
-    stack<char> result;
     string s;
+    string result;
     int m;
     char c;
     string command;
 
     cin >> s;
-    for (int i = 0; i < s.length(); i++) {
+    for (int i = 0; i < s.size(); i++) {
         st.push(s[i]);
     }
     cin >> m;
@@ -48,13 +48,11 @@ int main() {
     }
 
     while (!st.empty()) {
-        result.push(st.top());
+        result += st.top();
         st.pop();
     }
-    while (!result.empty()) {
-        cout << result.top();
-        result.pop();
-    }
+    reverse(result.begin(), result.end());
+    cout << result;
 
     return 0;
 }
